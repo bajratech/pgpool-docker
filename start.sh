@@ -1,9 +1,9 @@
 #!/bin/bash
 
 {
-	# check if fb is alive or not
+	# check if db is alive or not
 	echo "#------------------------------------------------------------------------------"
-	echo "# HEALTH CHECK"
+	echo "# DB CONNECTION CHECK"
 	echo "#------------------------------------------------------------------------------"
 
 	echo "health_check_period = 20
@@ -13,9 +13,9 @@
                                    # Health check timeout
                                    # 0 means no timeout
 	health_check_user = 'bajra'
-                                   # Health check user
+                                   # Health check user same as db connection user
 	health_check_password = 'b@jr@123'
-                                   # Password for health check user
+                                   # Password for health check user same as db connection password
 	health_check_max_retries = 3
                                    # Maximum number of times to retry a failed health check before giving up.
 	health_check_retry_delay = 1
