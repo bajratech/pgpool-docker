@@ -33,5 +33,13 @@
 } >> /usr/local/etc/pgpool.conf
 
 
-#RUN pgpool
-pgpool -n
+#RUN pgpool only if postgres db pod is running
+if psql -h 10.0.30.2 -U bajra -d postgres -lqt | cut -d \| -f 1 | grep -qw postgres;
+then
+    echo "Connection Successful."
+    pgpool -n
+else
+    echo "No Connection."
+    exit 1
+fi
+
