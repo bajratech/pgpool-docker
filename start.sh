@@ -1,9 +1,30 @@
 #!/bin/bash
 
 {
-	echo ""
-	echo "# - Backend Connection Settings -"
-	echo ""
+	# check if fb is alive or not
+	echo "#------------------------------------------------------------------------------"
+	echo "# HEALTH CHECK"
+	echo "#------------------------------------------------------------------------------"
+
+	echo "health_check_period = 20
+                                   # Health check period
+                                   # Disabled (0) by default
+	health_check_timeout = 10
+                                   # Health check timeout
+                                   # 0 means no timeout
+	health_check_user = 'bajra'
+                                   # Health check user
+	health_check_password = 'b@jr@123'
+                                   # Password for health check user
+	health_check_max_retries = 3
+                                   # Maximum number of times to retry a failed health check before giving up.
+	health_check_retry_delay = 1
+                                   # Amount of time to wait (in seconds) between retries."
+
+    # database connection setting
+	echo "#------------------------------------------------------------------------------"
+	echo "# BACKEND CONNECTION SETTINGS"
+	echo "#------------------------------------------------------------------------------"
 
 	echo "#backend_hostname0 = 0.0.0.0
                                    # Host name or IP address to connect to for backend 0
@@ -33,13 +54,6 @@
 } >> /usr/local/etc/pgpool.conf
 
 
-#RUN pgpool only if postgres db pod is running
-if psql -h 10.0.30.2 -U bajra -d postgres -lqt | cut -d \| -f 1 | grep -qw postgres;
-then
-    echo "Connection Successful."
-    pgpool -n
-else
-    echo "No Connection."
-    exit 1
-fi
+#RUN pgpool
+pgpool -n
 
