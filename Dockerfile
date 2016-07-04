@@ -1,4 +1,4 @@
-FROM postgres:9.4 
+FROM postgres:9.5 
 
 RUN apt-get update
 RUN apt-get install -y postgresql-server-dev-9.4 apache2 libapache2-mod-php5 curl build-essential
