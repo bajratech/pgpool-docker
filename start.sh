@@ -6,7 +6,7 @@
 	echo "# DB CONNECTION CHECK"
 	echo "#------------------------------------------------------------------------------"
 
-	echo "health_check_period = 20
+	echo "health_check_period = 40
                                    # Health check period
                                    # Disabled (0) by default
 	health_check_timeout = 10
